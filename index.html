@@ -105,50 +105,21 @@
 
 
   <!-- Modal -->
-  <div id="complete-dialog" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">LAYER LIST</h4>
-        </div>
-        <div class="modal-ket">
-          <button type="button" class="echeck"><i class="enav icon-enav-18"></i></button>
-          <div class="list-title">Operational Layers</div>
-          
-        </div>
-        
-        <div class="modal-body">
-          <form action="#" class="layer">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Depth Area
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Anchorage area - Green
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Harbour area (administrative) - Purple
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Exclusive Economic Zone - Navy
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox"> Territorial sea area - Red
-              </label>
-            </div>
-          </form>
-          
-        </div>
-        
+  <div id="h-notes" class="modal fade" tabindex="-1">
+    <div class="notes">
+      <div class="container-fluid">
+        <h2 class="notes-title">HIDROGRAPHIC NOTES</h2>
+        <a href="chart.html" class="btn btn-note">Chart</a>   
+        <a href="#" class="btn btn-note">ENC</a>   
+        <a href="#" class="btn btn-note">Publication</a>   
+        <a href="#" class="btn btn-note">Port Information</a>   
+        <a href="#" class="btn btn-note">Marine Life</a>   
+      </div>
+      <div class="nav-note">
+        <ul>
+          <li><a href="#" data-toggle="modal" data-target="#dialog-signup"><i class="enav icon-enav-26"></i>Draft</a></li>
+          <li><a href="#"><i class="enav icon-enav-27"></i>Submitted</a></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -283,7 +254,8 @@
     <div class="modal-dialog">
       <ul class="weather-is">
           <li><a href="javascript:klikWeather()"><i class="enav icon-enav-15"></i><span class="title">WEATHER</span></a></li>
-          <li><a href="javascript:klikLapor()"><i class="enav icon-enav-14"></i><span class="title">IMAGE</span></a></li>
+          <li><a href="javascript:klikLapor()"><i class="enav icon-enav-14"></i><span class="title">H NOTES</span></a></li>
+          <!-- <li><a href="#" data-toggle="modal" data-target="#h-notes"><i class="enav icon-enav-14"></i><span class="title">H NOTES</span></a></li> -->
         </ul>
     </div>
   </div>
@@ -377,13 +349,20 @@
                          //window.location.href = "share.html?lat="+lat+"&lng="+lng;
                          $("#show-weather").click();
                      }
+
+                     function tes(){
+                        $('#h-notes').modal('show')
+                        $('#modal-weather').modal('hide')
+                        $('body').addClass('modal-open');
+                     }
     
     function klikWeather() {
         window.location.href = urlWeather;
     }
     
     function klikLapor() {
-        window.location.href = urlLapor;
+        //window.location.href = urlLapor;
+        tes();
     }
     
 

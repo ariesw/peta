@@ -915,6 +915,10 @@ ul.datas {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+.main-nav ul{
+  margin: 0;
+  padding: 0;
+}
 .main-nav li{
   float: left;
   width: 25%;
@@ -931,6 +935,7 @@ ul.datas {
 }
 .main-nav li a{
   color: #fff;
+  font-size: 10px;
 }
 .main-nav li a:hover{
   color: #fff;
@@ -1056,8 +1061,8 @@ html, body{
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(#000, .2);
-  &:before{
+  /*background-color: rgba(#000, .2);*/
+  /*&:before{
     content: '';
     position: absolute;
     top: 0;
@@ -1067,7 +1072,7 @@ html, body{
     background-color: rgba($color_1, .2);
     height: 100%;
     z-index: -1;
-  }
+  }*/
   .nav-note{
     position: absolute;
     bottom: 0;
@@ -1111,7 +1116,7 @@ html, body{
       text-align: center;
       border-radius: 4px;
       margin-bottom: 10px;
-      padding: 15px 0;
+      padding: 8px 0;
       font-size: 16px;
       &:hover{
         background-color: lighten($color_1, 10%);

@@ -931,6 +931,10 @@ ul.datas li {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 
+.main-nav ul {
+  margin: 0;
+  padding: 0; }
+
 .main-nav li {
   float: left;
   width: 25%;
@@ -946,7 +950,8 @@ ul.datas li {
   width: auto; }
 
 .main-nav li a {
-  color: #fff; }
+  color: #fff;
+  font-size: 10px; }
 
 .main-nav li a:hover {
   color: #fff;
@@ -1058,17 +1063,18 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2); }
-  .notes:before {
+  /*background-color: rgba(#000, .2);*/
+  /*&:before{
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left:0;
     right: 0;
     bottom: 0;
-    background-color: rgba(28, 166, 187, 0.2);
+    background-color: rgba($color_1, .2);
     height: 100%;
-    z-index: -1; }
+    z-index: -1;
+  }*/ }
   .notes .nav-note {
     position: absolute;
     bottom: 0;
@@ -1105,7 +1111,7 @@ html, body {
     text-align: center;
     border-radius: 4px;
     margin-bottom: 10px;
-    padding: 15px 0;
+    padding: 8px 0;
     font-size: 16px; }
     .notes .btn-note:hover {
       background-color: #2bc7df; }
