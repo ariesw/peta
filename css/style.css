@@ -961,6 +961,10 @@ ul.datas li {
   padding: 50px;
   position: relative; }
 
+@media (max-width: 767px) {
+  .dialog-enav {
+    padding: 50px 15px;
+    position: relative; } }
 .dialog-enav .dialog-header {
   text-align: center;
   color: #fff; }
@@ -981,7 +985,28 @@ ul.datas li {
   .form-box textarea {
     border: 0;
     width: 100%; }
+  .form-box select {
+    border: 0 !important;
+    /*Removes border*/
+    -webkit-appearance: none;
+    /*Removes default chrome and safari style*/
+    -moz-appearance: none;
+    /* Removes Default Firefox style*/
+    background: url("images/arrow.png") no-repeat;
+    /*Adds background-image*/
+    background-position: 82px 14px;
+    /*Position of the background-image*/
+    width: 100px;
+    /*Width of select dropdown to give space for arrow image*/
+    text-indent: 0.01px;
+    /* Removes default arrow from firefox*/
+    text-overflow: "";
+    /*Removes default arrow from firefox*/
+    color: #999; }
 
+@media (max-width: 767px) {
+  .form-box .form-group {
+    padding: 20px 10px; } }
 .menu-box {
   margin-bottom: 30px; }
   .menu-box .menu-icon {
@@ -1027,7 +1052,9 @@ ul.datas li {
   /* IE 10 */
   background: -ms-linear-gradient(left, #59a5f1, #41d5fb);
   /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #59a5f1, #41d5fb); }
+  background: -o-linear-gradient(left, #59a5f1, #41d5fb);
+  -webkit-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
 
 .form-group-w30 {
   width: 33.33333%;
