@@ -29,9 +29,8 @@
     <link rel="stylesheet" type="text/css" href="css/leaflet.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-
     <script src="js/leaflet.js"></script>
-	  <script src="js/leaflet.ajax.min.js"></script>
+	<script src="js/leaflet.ajax.min.js"></script>
     <script src="js/leaflet.contextmenu.js"></script>
 
   </head>
@@ -40,7 +39,7 @@
   <div class="header">
     <div class="header-title">
       <div class="econtainer">
-        <a href="#" class="btn right-btn">CANCEL</a>
+        <a href="index.html" class="btn right-btn">Cancel</a>
         <a href="index.html" class="btn btn-back"><i class="enav icon-enav-16"></i> <span>H-Notes</span></a>
         <div class="section-title">CHART</div>
       </div>
@@ -61,21 +60,21 @@
                 <div class="form-box">
                   <form action="#">
                     <div class="form-group">
-                        <label for="" class="title">CHART DETAILS</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="p_name" class="form-control" placeholder="Prefix">
-                    </div>
-                    <div class="form-group form-group-w30">
-                       <input type="text" id="p_name" class="form-control" placeholder="Number">
-                        
-                    </div>
-                    <div class="form-group form-group-w30">
-                        <input type="text" id="p_name" class="form-control" placeholder="Suffix">
-                    </div>
-                    <div class="form-group form-group-w30">
-                        <input type="text" id="p_name" class="form-control" placeholder="Edition">
-                    </div>
+						<label for="" class="title">CHART DETAILS</label>
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_c_edition" class="form-control" placeholder="Edition">
+					</div>
+					<div class="form-group form-group-w30">
+					   <input type="text" id="p_c_prefix" class="form-control" placeholder="Prefix">
+						
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_c_number" class="form-control" placeholder="Number">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_c_suffix" class="form-control" placeholder="Suffix">
+					</div>
 
                     <div class="clearfix"></div>
                   </form>
@@ -84,14 +83,15 @@
                 <div class="form-box">
                   <form action="#">
                     <div class="form-group">
-                        <label for="" class="title">NOTICE TO MARINERS</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="p_name" class="form-control" placeholder="NM Week">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="p_name" class="form-control" placeholder="NM Year">
-                    </div>
+						<label for="" class="title">NOTICE TO MARINERS</label>
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_nm_week" class="form-control" placeholder="NM Week">
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_nm_year" class="form-control" placeholder="NM Year">
+					</div>
+
 
                     <div class="clearfix"></div>
                   </form>
@@ -100,10 +100,14 @@
                 <div class="menu-box">
                   <h3>PHOTOS</h3>
                   <div class="menu-icon">
-                    <a href="submit-photo.html"><i class="enav icon-enav-28"></i></a>
-                    <a href="submit-photo.html"><i class="enav icon-enav-29"></i></a>
+                    <a href="#" class="take-photo"><i class="enav icon-enav-28"></i></a>
+                    <a href="#" class="choose-photo"><i class="enav icon-enav-29"></i></a>
                   <div class="clearfix"></div>
                   </div>
+				  <br />
+				  <div class="row cass-pic" style="display:none;">
+					  <div class="col-md-6"><img src="images/photo-submit.jpg" id="p_photo" class="img-responsive" alt=""></div>
+				  </div>
                 </div>
 
                 <div class="form-box">
@@ -111,33 +115,33 @@
                     <div class="form-group text-center">
                         <label for="" class="title">OBJECT LOCATION</label>
                         <p>Location is WGS84 Datum</p>
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Use Phone Location</a>
+                        <a href="#" class="get-loc btn btn-primary btn-lg btn-block">Use Phone Location</a>
                     </div>
                     <div class="form-group text-center">
-                        <input type="text" id="p_name" class="form-control" placeholder="Latitude : N">
-                    </div>
-                    <div class="form-group form-group-w30">
-                       <input type="text" id="p_name" class="form-control" placeholder="Degrees">
-                    </div>
-                    <div class="form-group form-group-w30">
-                        <input type="text" id="p_name" class="form-control" placeholder="Minutes">
-                    </div>
-                    <div class="form-group form-group-w30">
-                        <input type="text" id="p_name" class="form-control" placeholder="Decimal">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group text-center">
-                        <input type="text" id="p_name" class="form-control" placeholder="Longitude : W">
-                    </div>
-                    <div class="form-group form-group-w30">
-                       <input type="text" id="p_name" class="form-control" placeholder="Degrees">
-                    </div>
-                    <div class="form-group form-group-w30">
-                        <input type="text" id="p_name" class="form-control" placeholder="Minutes">
-                    </div>
-                    <div class="form-group form-group-w30">
-                        <input type="text" id="p_name" class="form-control" placeholder="Decimal">
-                    </div>
+						<input type="text" id="p_latitude" class="form-control" placeholder="Latitude : N">
+					</div>
+					<div class="form-group form-group-w30">
+					   <input type="text" id="p_lat_degrees" class="form-control" placeholder="Degrees">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_lat_minutes" class="form-control" placeholder="Minutes">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_lat_decimal" class="form-control" placeholder="Decimal">
+					</div>
+					<div class="clearfix"></div>
+					<div class="form-group text-center">
+						<input type="text" id="p_longitude" class="form-control" placeholder="Longitude : W">
+					</div>
+					<div class="form-group form-group-w30">
+					   <input type="text" id="p_long_degrees" class="form-control" placeholder="Degrees">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_long_minutes" class="form-control" placeholder="Minutes">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_long_decimal" class="form-control" placeholder="Decimal">
+					</div>
 
                     <div class="clearfix"></div>
                   </form>
@@ -149,20 +153,20 @@
                         <label for="" class="title">SUPORTING INFORMATION</label>
                     </div>
                     <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Observation"></textarea>
-                    </div>
-                    <div class="form-group">
-                       <label class="label-switch">
-  <input type="checkbox" class="switch switch-bootstrap status" name="status" id="status" value="1" checked="checked">
+						<textarea name="p_observation" id="p_observation" cols="30" rows="10" placeholder="Observation"></textarea>
+					</div>
+					<div class="form-group">
+					   <label class="label-switch">
+  <input type="checkbox" class="switch switch-bootstrap status" name="p_source" id="p_source" value="1" checked="checked">
   <span class="lable">Not willing to be named as source</span></label>
-                    </div>
+					</div>
 
                     <div class="clearfix"></div>
                   </form>
                 </div>
 
-                <a href="#" class="btn btn-form pull-left">Cancel</a>
-                <a href="#" class="btn btn-form pull-right">Submit</a>
+                <a href="index.html" class="btn btn-form pull-left">Cancel</a>
+                <a href="#" class="btn btn-form pull-right btn-submt">Submit</a>
 
               </div>
               
@@ -178,168 +182,93 @@
     <script src="js/global.js"></script>
 
 	<script>
-	
-		//var hammertime = new Hammer(
-		//	$( "#mapid" )[ 0 ], {
-		//	   domEvents: true
-		//	}
-		//);
-		//hammertime.get('press').set({
-		//	time: 1000
-		//});
-		
-    
-    
-    var mymap = L.map('mapid',{contextmenu: true, preferCanvas: true, attributionControl:true, renderer: L.canvas()}).setView([-7.242883, 112.7211714], 8);
-    
-
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-				attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-				maxZoom: 14
-		}).addTo(mymap);
-        
-//         L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZXN3ZGQiLCJhIjoiY2o2djFlenhhMHh2MzJxbW43NmEwNmZtZCJ9.ZC-jO1LlC-53Yr3hhoSQ1A', {
-//           maxZoom: 14,
-//           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-//             '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-//             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//           id: 'mapbox.streets'
-//         }).addTo(mymap);
-        
-        var lat, lng, urlWeather, urlLapor;
-        
-        mymap.on("contextmenu", function (ev) {
-               //L.marker(event.latlng).addTo(mymap);
-                 lat = ev.latlng.lat;
-                 lng = ev.latlng.lng;
-               showOption();
-               });
-               
-		function styleNya(feature){
-			switch(feature.properties.LAYER){
-                case 'Depth area' : return { fillcolor:'blue', fillOpacity: 0.5,
-												  weight: 1,
-											opacity: 1,
-											color: 'white',
-											dashArray: '1', };break;
-                case 'Anchorage area' : return { fillOpacity: 0.5,
-												  weight: 1,
-											opacity: 0.5,
-											color: 'green',
-											dashArray: '2', };break;
-                case 'Harbour area (administrative)' : return { fillOpacity: 0.5,
-                                                weight: 1,
-                                                opacity: 0.5,
-                                                color: 'PURPLE',
-                                                dashArray: '1', };break;
-                case 'Exclusive Economic Zone' : return { fillOpacity: 0.5,
-                                                weight: 1,
-                                                opacity: 0.5,
-                                                color: 'NAVY',
-                                                dashArray: '1', };break;
-                case 'Territorial sea area' : return { fillOpacity: 0.1,
-                                                weight: 1,
-                                                opacity: 0.5,
-                                                color: 'red',
-                                                dashArray: '1', };break;
-                default: return { color: "none",fillOpacity: 0,
-                    weight: 0,
-                    opacity: 0,
-                    dashArray: '0' };
+	var dataonload = false;
+	var onSuccess = ((function(_this) {
+		return function(path) {
+			var dataURL = "data:image/jpg;base64," + path
+			if(!dataonload){
+				if(dataURL){
+					$(".cass-pic").show();
+					$(".img-responsive").attr("src",dataURL);
+				}
 			}
+		};
+	})(this));
+	function initActionSheet(onSuccess,act) {
+		var resource;
+		if(act=='take'){
+			resource = navigator.camera.PictureSourceType.CAMERA;
+		}else{
+			resource = navigator.camera.PictureSourceType.PHOTOLIBRARY;
 		}
-    
-    //$( "#mapid" ).on( "press", function( e ) {
-    
-    
-                  //   showOption();
-                   //  } );
-                     
-                     function showOption(){
-                         //alert(lat+','+lng);
-                         urlWeather = "weather.html?lat="+lat+"&lng="+lng;
-                         urlLapor = "share.html?lat="+lat+"&lng="+lng;
-                         //window.location.href = "share.html?lat="+lat+"&lng="+lng;
-                         $("#show-weather").click();
-                     }
-    
-    function klikWeather() {
-        window.location.href = urlWeather;
-    }
-    
-    function klikLapor() {
-        window.location.href = urlLapor;
-    }
-    
-
-    var jsonTest = new L.GeoJSON.AJAX(["https://www.arieswdd.com/geojson/ID1_66_area.geojson","https://www.indoedukasi.com/geojson/ID3_78_area.geojson","https://www.arieswdd.com/geojson/ID3_79_area.geojson","https://www.arieswdd.com/geojson/ID3_80_area.geojson","https://www.indoedukasi.com/geojson/ID3_81_area.geojson","https://www.arieswdd.com/geojson/ID3_82_area.geojson","https://www.indoedukasi.com/geojson/ID4_86_area.geojson","https://www.arieswdd.com/geojson/ID4_91_area.geojson","https://www.indoedukasi.com/geojson/ID4_96_area.geojson"],{style:styleNya}).addTo(mymap);
-    
-    jsonTest.refilter(function(feature){
-                          return feature.properties.key === values;
-                          });
-	
-		function onLocationFound(e) {
-		var radius = e.accuracy / 2;
-			L.marker(e.latlng).addTo(mymap).bindPopup("Anda dalam radius " + radius + " meter dari titik ini").openPopup();
-			L.circle(e.latlng, radius).addTo(mymap);
-		}
-
-		function onLocationError(e) {
-			alert(e.message);
-		}
-
-		mymap.on('locationfound', onLocationFound);
-		mymap.on('locationerror', onLocationError);
-
-		//mymap.locate({setView: true, maxZoom: 16});
-		
-		$(".e-location").click(function(){
-			mymap.locate({setView:true, maxZoom: 14});
+		navigator.camera.getPicture(onSuccess, function(){}, {
+			correctOrientation: true,
+			quality: 40,
+			destinationType: navigator.camera.DestinationType.DATA_URL,
+			sourceType: resource
 		});
-
-    $("#menu-tex").click(function(){
-      $('body').addClass('menushow');
-    });
-    $(".main-nav").click(function(){
-      $('body').removeClass('menushow');
-    });
-
-function showDetail(element){
-    var data = JSON.parse($(element).attr('rel'));
-    $("#p_name").val(data.name);
-    $("#p_address").val(data.address);
-    $("#p_telephone").val(data.telephone);
-    $("#p_location").val(data.location);
-    $("#p_latitude").val(data.latitude);
-    $("#p_longitude").val(data.longitude);
-    $("#p_accuracy").val(data.accuracy);
-    $("#p_datum").val(data.datum);
-    $("#p_chart_affected").val(data.chart_affected);
-    $("#p_edition").val(data.edition);
-    $("#p_encs_affected").val(data.encs_affected);
-    $("#p_lastnm_used").val(data.lastnm_used);
-    $("#p_other_public_affected").val(data.other_public_affected);
-    $("#p_detail").val(data.detail);
-    $("#p_photo").attr("src",HOSTDOMAIN+"/imgs/files/hidrographic/"+data.photo);
-}
-    
-    $.ajax({
-           url:HOSTDOMAIN+'/index.php?act=get-list-hidrographic',
-           type:'GET',
-           dataType:'json',
-           contentType:'json',
-           cache: false,
-           success:function(data){
-           var data = data.data;
-           for(var i=0;i<data.length;i++){
-           //console.log();
-           L.marker([data[i].latitude, data[i].longitude]).addTo(mymap).bindPopup("<b>"+data[i].name+"</b><br />"+data[i].address+".<br /><a href='#' onclick='showDetail(this)' rel='"+JSON.stringify(data[i])+"' data-toggle='modal' data-target='#detail-dialog' >Click To Detail</a>");
-           }
-           }
-           });
-
-
-		
+	}
+	$(document).ready(function(){
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var lat = url.searchParams.get("lat");
+		var lng = url.searchParams.get("lng");
+		$(".take-photo").click(function(e){
+			e.preventDefault();
+			initActionSheet(onSuccess,'take');
+		});
+		$(".choose-photo").click(function(e){
+			e.preventDefault();
+			initActionSheet(onSuccess,'choose');
+		});
+		$(".get-loc").click(function(e){
+			e.preventDefault();
+			$("#p_latitude").val(lat);
+			$("#p_longitude").val(lng);
+		});
+		$(".btn-submt").click(function(e){
+			e.preventDefault();
+			var p_c_edition = $("#p_c_edition").val();
+			var p_c_prefix = $("#p_c_prefix").val();
+			var p_c_number = $("#p_c_number").val();
+			var p_c_suffix = $("#p_c_suffix").val();
+			var p_latitude = $("#p_latitude").val();
+			var p_longitude = $("#p_longitude").val();
+			var p_nm_week = $("#p_nm_week").val();
+			var p_nm_year = $("#p_nm_year").val();
+			var p_lat_degrees = $("#p_lat_degrees").val();
+			var p_lat_minutes = $("#p_lat_minutes").val();
+			var p_lat_decimal = $("#p_lat_decimal").val();
+			var p_long_degrees = $("#p_long_degrees").val();
+			var p_long_minutes = $("#p_long_minutes").val();
+			var p_long_decimal = $("#p_long_decimal").val();
+			var p_observation = $("#p_observation").val();
+			var p_photo = $(".img-responsive").attr('src');
+			var p_deviceuuid = localStorage.getItem("deviceuuid");
+			$.ajax({
+				url:HOSTDOMAIN+"/index.php?act=add-hidrographic",
+				type:'POST',
+				data:{p_c_edition:p_c_edition,p_c_prefix:p_c_prefix,p_c_number:p_c_number,p_c_suffix:p_c_suffix,p_latitude:p_latitude,p_longitude:p_longitude,p_nm_week:p_nm_week,p_nm_year:p_nm_year,p_lat_degrees:p_lat_degrees,p_lat_minutes:p_lat_minutes,p_lat_decimal:p_lat_decimal,p_long_degrees:p_long_degrees,p_long_minutes:p_long_minutes,p_long_decimal:p_long_decimal,p_observation:p_observation,p_photo:p_photo,p_deviceuuid:p_deviceuuid},
+				dataType:'json',
+				success:function(datax){
+					goHome();
+					if(datax.data && datax.error <= 0){
+						navigator.notification.alert(datax.message.join("\r\n"), function(){
+						}, "", "OK");
+					}else{
+						navigator.notification.alert(datax.message.join("\r\n"), function(){
+						
+						}, "", "OK");
+					}
+				},
+				error:function(data){
+					navigator.notification.alert("Error Connection", function(){
+					
+					}, "", "OK");
+				}
+			});
+		});
+	});	
 	</script>
 
 

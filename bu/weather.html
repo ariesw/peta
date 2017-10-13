@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>E-NAVIGATION </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- ==============================================
+    Favicons
+    =============================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+  </head>
+  <body>
+  <div class="main-wrap ">
+     
+     <div class="header-title">
+      <div class="econtainer">
+        <a href="index.html" class="btn btn-back"><i class="fa fa-angle-left"></i></a>
+        <div class="section-title">WEATHER</div>
+      </div>
+     </div>
+
+     <div class="content">
+       <div class="econtainer">
+         <h4 id="weather-city"></h4>
+			<table class="table">
+				<tr>
+					<td>
+						Cuaca
+					</td>
+					<td id="weather-title">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Temp
+					</td>
+					<td id="weather-temp">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Maks. Temp
+					</td>
+					<td id="weather-max-temp">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Min. Temp
+					</td>
+					<td id="weather-min-temp">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Kecepatan Angin
+					</td>
+					<td id="weather-wind">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Kelembaban
+					</td>
+					<td id="weather-humidity">
+					</td>
+				</tr>
+			</table>
+<!--         <!--<div class="content-list">-->
+<!--            <div class="item">-->
+<!--              <a href="#"><img src="images/weather-img-1.jpg" class="img-responsive" alt=""></a>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--              <a href="#"><img src="images/weather-img-2.jpg" class="img-responsive" alt=""></a>-->
+<!--            </div>-->
+<!--         </div>-->
+<!--         <a class="btn btn-raised btn-lg btn-primary btn-block" href="#">KETERANGAN SIMBOL CUACA</a>-->
+
+       </div>
+     </div>
+
+  </div>
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script src="js/ripples.min.js"></script>
+<script src="js/material.min.js"></script>
+
+<script>
+   $(function () {
+    $.material.init();
+    
+  });
+	
+url_string = window.location.href;
+var url = new URL(url_string);
+var p_latitude=url.searchParams.get("lat");
+var p_longitude=url.searchParams.get("lng");
+
+  $.ajax({
+		url:"http://api.openweathermap.org/data/2.5/weather?lat="+p_latitude+"&lon="+p_longitude+"&appid=325bde0e66e526155a6a3f8854adc311",
+		dataType:'json',
+		success:function(datax){
+			console.log(datax);
+			$("#weather-city").html(datax.name);
+			$("#weather-title").html(datax.weather[0].main+"<img src='http://openweathermap.org/img/w/"+datax.weather[0].icon+".png'>");
+			$("#weather-temp").html(parseInt(datax.main.temp-273.15)+"&deg;C");
+			$("#weather-max-temp").html(parseInt(datax.main.temp_max-273.15)+"&deg;C");
+			$("#weather-min-temp").html(parseInt(datax.main.temp_min-273.15)+"&deg;C");
+			$("#weather-wind").html(parseInt(((datax.wind.speed/1000)*3600))+" Km/jam");
+			$("#weather-humidity").html(datax.main.humidity+"%");
+		},
+		error:function(data){
+			navigator.notification.alert("Error Connection", function(){
+			
+			}, "", "OK");
+		}
+	});
+  
+</script>
+
+
+
+
+  </body>
+</html>

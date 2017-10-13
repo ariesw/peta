@@ -1,4 +1,4 @@
-var HOSTDOMAIN = "https://www.arieswdd.com/enav";
+var HOSTDOMAIN = "https://www.arieswdd.com/indonesea";
 // cek local storage
 // HOSTDOMAIN = thishost;
 // HOSTDOMAIN = "http://"+thishost;

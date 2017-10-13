@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>E-NAVIGATION </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- ==============================================
+    Favicons
+    =============================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <script src="js/leaflet.js"></script>
+	  <script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/leaflet.contextmenu.js"></script>
+
+  </head>
+  <body class="modal-open">
+
+  <div class="header" style="z-index:99999;position: absolute;">
+    <div class="header-title">
+      <div class="econtainer">
+        <a href="index.html" class="btn btn-back"><i class="enav icon-enav-16"></i> <span>Home</span></a>
+        <div class="section-title">Weather</div>
+      </div>
+     </div>
+  </div>
+  <div class="main-wrap" style="overflow:hidden;">
+      <!-- MAPS -->
+      <div class="maps-wraper">
+		<div id="mapid" style="width: 100%; height: 100%"></div>
+      </div>
+  </div>
+
+    <div class="notes">
+      <div class="modal-backdrop fade in" style="height: 100%;"></div>
+      <div class="container-fluid" style="z-index: 2;position: absolute;text-align: center;top:0;left:0;bottom:0;width: 100%;padding:0;">
+        <div class="input-group" style="margin-top:50px; background: #cecece;width: 100%;padding:10px;">
+          <input style="text-align:center" type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="Search">
+        </div>
+        <h2 class="notes-title">MADURA STRAIT</h2>
+        <img src="images/ic-weather.png" width="60">
+        <p style="color: #fff;font-size: 20px;margin: 20px 0 40px 0;">Light Rain<br>7.1278° S, 112.6750° E</p>
+        <div class="col-xs-12" style="color:#fff;font-size: 20px;">
+          <div class="col-xs-6" style="height:60px;line-height: 60px;">
+              <img src="images/ic-weather2.png" width="60">
+          </div>
+          <div class="col-xs-6" style="height:80px;line-height: 80px;">
+            19 km/h
+          </div>
+        </div>
+        <div class="col-xs-12" style="color:#fff;font-size: 20px;">
+          <div class="col-xs-6" style="height:60px;line-height: 60px;">
+              <img src="images/ic-weather3.png" width="60">
+          </div>
+          <div class="col-xs-6" style="height:60px;line-height: 60px;">
+            0.44 m - 2.48 m
+          </div>
+        </div>
+      </div>
+      <div class="nav-note">
+        <ul>
+          <li style="width:100%;border:0;"><a style="padding:15px 0 20px 0;display: block;" href="#">TODAY</a></li>
+        </ul>
+      </div>
+    </div>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+
+	<script>
+	 
+    var urlParams = new URLSearchParams(window.location.search);
+    var mymap = L.map('mapid',{contextmenu: true, preferCanvas: true, attributionControl:true, renderer: L.canvas()}).setView([urlParams.get('lat'), urlParams.get('lng')], 7);
+    
+
+		L.tileLayer('https://api.mapbox.com/styles/v1/arieswdd/cj89yknij5tvj2snqxxldvxra/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYXJpZXN3ZGQiLCJhIjoiY2o2djFlenhhMHh2MzJxbW43NmEwNmZtZCJ9.ZC-jO1LlC-53Yr3hhoSQ1A', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+      '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    id: 'mapbox.streets'
+  }).addTo(mymap);
+        
+        var lat, lng, urlWeather, urlLapor;
+        
+        mymap.on("contextmenu", function (ev) {
+               //L.marker(event.latlng).addTo(mymap);
+                 lat = ev.latlng.lat;
+                 lng = ev.latlng.lng;
+               showOption();
+               });
+               
+		function styleNya(feature){
+			switch(feature.properties.LAYER){
+                case 'Depth area' : return { fillcolor:'blue', fillOpacity: 0.5,
+												  weight: 1,
+											opacity: 1,
+											color: 'white',
+											dashArray: '1', };break;
+                case 'Anchorage area' : return { fillOpacity: 0.5,
+												  weight: 1,
+											opacity: 0.5,
+											color: 'green',
+											dashArray: '2', };break;
+                case 'Harbour area (administrative)' : return { fillOpacity: 0.5,
+                                                weight: 1,
+                                                opacity: 0.5,
+                                                color: 'PURPLE',
+                                                dashArray: '1', };break;
+                case 'Exclusive Economic Zone' : return { fillOpacity: 0.5,
+                                                weight: 1,
+                                                opacity: 0.5,
+                                                color: 'NAVY',
+                                                dashArray: '1', };break;
+                case 'Territorial sea area' : return { fillOpacity: 0.1,
+                                                weight: 1,
+                                                opacity: 0.5,
+                                                color: 'red',
+                                                dashArray: '1', };break;
+                default: return { color: "none",fillOpacity: 0,
+                    weight: 0,
+                    opacity: 0,
+                    dashArray: '0' };
+			}
+		}
+    
+    //$( "#mapid" ).on( "press", function( e ) {
+    
+    
+                  //   showOption();
+                   //  } );
+                     
+                     function showOption(){
+                         //alert(lat+','+lng);
+                         urlWeather = "weather.html?lat="+lat+"&lng="+lng;
+                         urlLapor = "share.html?lat="+lat+"&lng="+lng;
+                         //window.location.href = "share.html?lat="+lat+"&lng="+lng;
+                         $("#show-weather").click();
+                     }
+
+                     function tes(){
+                        $('#h-notes').modal('show')
+                        $('#modal-weather').modal('hide')
+                        $('body').addClass('modal-open');
+                     }
+    
+    function klikWeather() {
+        window.location.href = urlWeather;
+    }
+    
+    function klikLapor() {
+        //window.location.href = urlLapor;
+        tes();
+    }
+    
+
+
+	
+		function onLocationFound(e) {
+		var radius = e.accuracy / 2;
+			L.marker(e.latlng).addTo(mymap).bindPopup("Anda dalam radius " + radius + " meter dari titik ini").openPopup();
+			L.circle(e.latlng, radius).addTo(mymap);
+		}
+
+		function onLocationError(e) {
+			alert(e.message);
+		}
+
+		mymap.on('locationfound', onLocationFound);
+		mymap.on('locationerror', onLocationError);
+
+		//mymap.locate({setView: true, maxZoom: 16});
+		
+		$(".e-location").click(function(){
+			mymap.locate({setView:true, maxZoom: 14});
+		});
+
+    $("#menu-tex").click(function(){
+      $('body').addClass('menushow');
+    });
+    $(".main-nav").click(function(){
+      $('body').removeClass('menushow');
+    });
+
+function showDetail(element){
+    var data = JSON.parse($(element).attr('rel'));
+    $("#p_name").val(data.name);
+    $("#p_address").val(data.address);
+    $("#p_telephone").val(data.telephone);
+    $("#p_location").val(data.location);
+    $("#p_latitude").val(data.latitude);
+    $("#p_longitude").val(data.longitude);
+    $("#p_accuracy").val(data.accuracy);
+    $("#p_datum").val(data.datum);
+    $("#p_chart_affected").val(data.chart_affected);
+    $("#p_edition").val(data.edition);
+    $("#p_encs_affected").val(data.encs_affected);
+    $("#p_lastnm_used").val(data.lastnm_used);
+    $("#p_other_public_affected").val(data.other_public_affected);
+    $("#p_detail").val(data.detail);
+    $("#p_photo").attr("src",HOSTDOMAIN+"/imgs/files/hidrographic/"+data.photo);
+}
+    
+    $.ajax({
+           url:HOSTDOMAIN+'/index.php?act=get-list-hidrographic',
+           type:'GET',
+           dataType:'json',
+           contentType:'json',
+           cache: false,
+           success:function(data){
+           var data = data.data;
+           for(var i=0;i<data.length;i++){
+           //console.log();
+           L.marker([data[i].latitude, data[i].longitude]).addTo(mymap).bindPopup("<b>"+data[i].name+"</b><br />"+data[i].address+".<br /><a href='#' onclick='showDetail(this)' rel='"+JSON.stringify(data[i])+"' data-toggle='modal' data-target='#detail-dialog' >Click To Detail</a>");
+           }
+           }
+           });
+
+
+		
+	</script>
+
+
+  
+
+  </body>
+</html>

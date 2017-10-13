@@ -882,7 +882,7 @@ ul.datas li {
   bottom: 0;
   left: 50%;
   z-index: 999;
-  background-color: rgba(28, 166, 187, 0.8);
+  background-color: #287cbe;
   border-radius: 20px 20px 0 0;
   padding: 5px 50px;
   cursor: pointer;
@@ -903,16 +903,86 @@ ul.datas li {
   right: 0;
   min-height: 90px;
   z-index: 999;
-  background-color: rgba(28, 166, 187, 0.8);
+  background-color: #287cbe;
   width: 100%;
   border-radius: 30px 30px 0 0;
-  padding: 10px 0;
+  padding-top: 10px;
   -webkit-transition: all ease .5s;
   transition: all ease .5s;
   bottom: 0;
   -webkit-transform: translateY(100%);
   -ms-transform: translateY(100%);
   transform: translateY(100%); }
+  .main-nav .submenu {
+    background: #15609d;
+    border-radius: 30px 30px 0 0;
+    -webkit-transition: all ease .5s;
+    transition: all ease .5s;
+    position: relative;
+    width: 100%;
+    display: block;
+    clear: both;
+    /*-webkit-transition: max-height 1s;
+    -moz-transition: max-height 1s;
+    -ms-transition: max-height 1s;
+    -o-transition: max-height 1s;
+    transition: max-height 1s;
+    overflow: hidden;
+    max-height: 0;
+
+    &.show{
+      max-height: 400px;
+    }*/ }
+    .main-nav .submenu > div {
+      width: 100%;
+      display: none; }
+      .main-nav .submenu > div.show {
+        /*display: block;*/ }
+    .main-nav .submenu .submenu-container {
+      padding: 20px 7%;
+      color: #fff;
+      font-size: 12px;
+      line-height: 20px; }
+      .main-nav .submenu .submenu-container .submenu-title {
+        color: #fff;
+        text-align: center;
+        margin: 0 0 20px 0;
+        font-size: 22px; }
+      .main-nav .submenu .submenu-container .route-list {
+        display: block;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 80px; }
+        .main-nav .submenu .submenu-container .route-list .item {
+          padding: 10px;
+          display: block;
+          background-color: #287cbe;
+          border-radius: 10px;
+          margin-bottom: 10px; }
+          .main-nav .submenu .submenu-container .route-list .item .title {
+            font-size: 22px;
+            margin-bottom: 10px; }
+          .main-nav .submenu .submenu-container .route-list .item .info {
+            margin-bottom: 4px;
+            font-size: 11px;
+            text-align: center;
+            line-height: .8; }
+            .main-nav .submenu .submenu-container .route-list .item .info:after {
+              clear: both;
+              display: inline-table;
+              content: ''; }
+          .main-nav .submenu .submenu-container .route-list .item .body-btn {
+            clear: both;
+            text-align: center; }
+            .main-nav .submenu .submenu-container .route-list .item .body-btn .btn {
+              padding: 3px 25px;
+              background-color: #759dbd;
+              color: #fff;
+              border-radius: 10px; }
+      .main-nav .submenu .submenu-container#nav-tools .btn {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px; }
 
 .menushow .main-nav {
   -webkit-transform: translateY(0);
@@ -934,37 +1004,41 @@ ul.datas li {
 .main-nav ul {
   margin: 0;
   padding: 0; }
-
-.main-nav li {
-  float: left;
-  width: 25%;
-  text-align: center;
-  list-style: none;
-  letter-spacing: 1px;
-  margin-top: 10px; }
-
-.main-nav li i {
-  display: block;
-  padding: 8px 0;
-  font-size: 24px;
-  width: auto; }
-
-.main-nav li a {
-  color: #fff;
-  font-size: 10px; }
-
-.main-nav li a:hover {
-  color: #fff;
-  text-decoration: none; }
+  .main-nav ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    list-style: none;
+    letter-spacing: 1px;
+    margin-top: 10px; }
+    .main-nav ul li:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid #15609d;
+      display: block;
+      margin: 5px auto 0 auto;
+      opacity: 0; }
+    .main-nav ul li.active:after {
+      opacity: 1; }
+    .main-nav ul li i {
+      display: block;
+      padding: 8px 0;
+      font-size: 24px;
+      width: auto; }
+    .main-nav ul li a {
+      color: #fff;
+      font-size: 10px; }
+      .main-nav ul li a:hover {
+        color: #fff;
+        text-decoration: none; }
 
 .dialog-enav {
   padding: 50px;
   position: relative; }
 
-@media (max-width: 767px) {
-  .dialog-enav {
-    padding: 50px 15px;
-    position: relative; } }
 .dialog-enav .dialog-header {
   text-align: center;
   color: #fff; }
@@ -985,28 +1059,7 @@ ul.datas li {
   .form-box textarea {
     border: 0;
     width: 100%; }
-  .form-box select {
-    border: 0 !important;
-    /*Removes border*/
-    -webkit-appearance: none;
-    /*Removes default chrome and safari style*/
-    -moz-appearance: none;
-    /* Removes Default Firefox style*/
-    background: url("images/arrow.png") no-repeat;
-    /*Adds background-image*/
-    background-position: 82px 14px;
-    /*Position of the background-image*/
-    width: 100px;
-    /*Width of select dropdown to give space for arrow image*/
-    text-indent: 0.01px;
-    /* Removes default arrow from firefox*/
-    text-overflow: "";
-    /*Removes default arrow from firefox*/
-    color: #999; }
 
-@media (max-width: 767px) {
-  .form-box .form-group {
-    padding: 20px 10px; } }
 .menu-box {
   margin-bottom: 30px; }
   .menu-box .menu-icon {
@@ -1052,9 +1105,7 @@ ul.datas li {
   /* IE 10 */
   background: -ms-linear-gradient(left, #59a5f1, #41d5fb);
   /* Opera 11.10+ */
-  background: -o-linear-gradient(left, #59a5f1, #41d5fb);
-  -webkit-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
-  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24); }
+  background: -o-linear-gradient(left, #59a5f1, #41d5fb); }
 
 .form-group-w30 {
   width: 33.33333%;
@@ -1141,7 +1192,7 @@ html, body {
     padding: 8px 0;
     font-size: 16px; }
     .notes .btn-note:hover {
-      background-color: #2bc7df; }
+      background-color: #4295d7; }
   .notes .notes-title {
     color: #fff;
     text-align: center;
@@ -1151,10 +1202,10 @@ html, body {
   background-color: #edf2f5; }
 
 .btn.right-btn {
-  color: #1ca6bb; }
+  color: #287cbe; }
 
 a.btn.btn-back {
-  color: #1ca6bb; }
+  color: #287cbe; }
 
 .section-title {
   color: #000;
@@ -1164,8 +1215,8 @@ a.btn.btn-back {
   height: auto; }
 
 .btn-primary {
-  background-color: #1ca6bb;
-  border-color: #1ca6bb; }
+  background-color: #287cbe;
+  border-color: #287cbe; }
 
 /*switch*/
 .label-switch {

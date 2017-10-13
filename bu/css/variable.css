@@ -1,0 +1,10 @@
+.bolder {
+  font-weight: 600; }
+
+.cfix {
+  content: '';
+  display: block;
+  width: 100%;
+  clear: both; }
+
+/*# sourceMappingURL=variable.css.map */
