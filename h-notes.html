@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>E-NAVIGATION </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- ==============================================
+    Favicons
+    =============================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script src="js/leaflet.js"></script>
+	<script src="js/leaflet.ajax.min.js"></script>
+    <script src="js/leaflet.contextmenu.js"></script>
+
+  </head>
+  <body>
+
+  <div class="header">
+    <div class="header-title">
+      <div class="econtainer">
+        <a href="index.html" class="btn right-btn">Cancel</a>
+        <a href="index.html" class="btn btn-back"><i class="enav icon-enav-16"></i> <span>H-Notes</span></a>
+        <div class="section-title">New H-Notes</div>
+      </div>
+     </div>
+  </div>
+
+  <div class="main-wrap h-auto">
+     
+     
+
+       <div class="container-fluid">
+         
+         <div class="content">
+            
+            <div class="row">
+              <div class="col-md-12">
+
+                <div class="form-box">
+                  <form action="#">
+                    <div class="form-group">
+						<label for="" class="title">Hydrographic Note</label>
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_c_edition" class="form-control" placeholder="Reference">
+					</div>
+					<div class="form-group form-group-w30">
+					   <input type="text" id="p_c_prefix" class="form-control" placeholder="Date">
+						
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_c_number" class="form-control" placeholder="Month">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_c_suffix" class="form-control" placeholder="Year">
+					</div>
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+                <div class="form-box">
+                  <form action="#">
+                    <div class="form-group">
+						<label for="" class="title">Sender</label>
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_nm_week" class="form-control" placeholder="Name or Ship Name">
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_nm_year" class="form-control" placeholder="Address">
+					</div>
+
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+                <div class="menu-box">
+                  <h3>PHOTOS</h3>
+                  <div class="menu-icon">
+                    <a href="#" class="take-photo"><i class="enav icon-enav-28"></i></a>
+                    <a href="#" class="choose-photo"><i class="enav icon-enav-29"></i></a>
+                  <div class="clearfix"></div>
+                  </div>
+				  <br />
+				  <div class="row cass-pic" style="display: none;">
+					  <div class="col-md-6"><img src="images/photo-submit.jpg" id="p_photo" class="img-responsive" alt=""></div>
+				  </div>
+                </div>
+
+                <div class="form-box">
+                  <form action="#">
+                    <div class="form-group text-center">
+                        <label for="" class="title">OBJECT LOCATION</label>
+                        <p>Location is WGS84 Datum</p>
+                        <a href="#" class="get-loc btn btn-primary btn-lg btn-block">Use Phone Location</a>
+                    </div>
+                    <div class="form-group text-center">
+						<!-- <input type="text" id="p_latitude" class="form-control" placeholder="Latitude : N"> -->
+						<label for="" class="title">Latitude : N</label>
+					</div>
+					<div class="form-group form-group-w30">
+					   <input type="text" id="p_lat_degrees" class="form-control" placeholder="Degrees">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_lat_minutes" class="form-control" placeholder="Minutes">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_lat_decimal" class="form-control" placeholder="Decimal">
+					</div>
+					<div class="clearfix"></div>
+					<div class="form-group text-center">
+						<!-- <input type="text" id="p_longitude" class="form-control" placeholder="Longitude : W"> -->
+						<label for="" class="title">Longitude : W</label>
+					</div>
+					<div class="form-group form-group-w30">
+					   <input type="text" id="p_long_degrees" class="form-control" placeholder="Degrees">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_long_minutes" class="form-control" placeholder="Minutes">
+					</div>
+					<div class="form-group form-group-w30">
+						<input type="text" id="p_long_decimal" class="form-control" placeholder="Decimal">
+					</div>
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+                <div class="form-box">
+                  <form action="#">
+                    <div class="form-group form-group-w50">
+						<input type="text" id="p_nm_week" class="form-control" placeholder="Chart Affected">
+					</div>
+					<div class="form-group form-group-w50">
+						<input type="text" id="p_nm_year" class="form-control" placeholder="Edition">
+					</div>
+					<div class="clearfix"></div>
+					<div class="form-group">
+						<input type="text" id="p_nm_year" class="form-control" placeholder="ENC’s Affected">
+					</div>
+					<div class="form-group">
+						<input type="text" id="p_nm_year" class="form-control" placeholder="Other Publication Affected :">
+					</div>
+
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+                
+                <div class="form-box">
+                  <form action="#">
+                    <div class="form-group text-center">
+                        <label for="" class="title">SUPORTING INFORMATION</label>
+                    </div>
+                    <div class="form-group">
+						<textarea name="p_observation" id="p_observation" cols="30" rows="10" placeholder="Observation"></textarea>
+					</div>
+					<div class="form-group">
+					   <label class="label-switch">
+  <input type="checkbox" class="switch switch-bootstrap status" name="p_source" id="p_source" value="1" checked="checked">
+  <span class="lable">Not willing to be named as source</span></label>
+					</div>
+
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+                <a href="index.html" class="btn btn-form pull-left">Cancel</a>
+                <a href="#" class="btn btn-form pull-right btn-submt">Submit</a>
+
+              </div>
+              
+            </div>
+         </div>
+
+       </div>
+
+  </div>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/global.js"></script>
+
+	<script>
+	var dataonload = false;
+	var onSuccess = ((function(_this) {
+		return function(path) {
+			var dataURL = "data:image/jpg;base64," + path
+			if(!dataonload){
+				if(dataURL){
+					$(".cass-pic").show();
+					$(".img-responsive").attr("src",dataURL);
+				}
+			}
+		};
+	})(this));
+	function initActionSheet(onSuccess,act) {
+		var resource;
+		if(act=='take'){
+			resource = navigator.camera.PictureSourceType.CAMERA;
+		}else{
+			resource = navigator.camera.PictureSourceType.PHOTOLIBRARY;
+		}
+		navigator.camera.getPicture(onSuccess, function(){}, {
+			correctOrientation: true,
+			quality: 40,
+			destinationType: navigator.camera.DestinationType.DATA_URL,
+			sourceType: resource
+		});
+	}
+	$(document).ready(function(){
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var lat = url.searchParams.get("lat");
+		var lng = url.searchParams.get("lng");
+		$(".take-photo").click(function(e){
+			e.preventDefault();
+			initActionSheet(onSuccess,'take');
+		});
+		$(".choose-photo").click(function(e){
+			e.preventDefault();
+			initActionSheet(onSuccess,'choose');
+		});
+		$(".get-loc").click(function(e){
+			e.preventDefault();
+			$("#p_latitude").val(lat);
+			$("#p_longitude").val(lng);
+		});
+		$(".btn-submt").click(function(e){
+			e.preventDefault();
+			var p_c_edition = $("#p_c_edition").val();
+			var p_c_prefix = $("#p_c_prefix").val();
+			var p_c_number = $("#p_c_number").val();
+			var p_c_suffix = $("#p_c_suffix").val();
+			var p_latitude = $("#p_latitude").val();
+			var p_longitude = $("#p_longitude").val();
+			var p_nm_week = $("#p_nm_week").val();
+			var p_nm_year = $("#p_nm_year").val();
+			var p_lat_degrees = $("#p_lat_degrees").val();
+			var p_lat_minutes = $("#p_lat_minutes").val();
+			var p_lat_decimal = $("#p_lat_decimal").val();
+			var p_long_degrees = $("#p_long_degrees").val();
+			var p_long_minutes = $("#p_long_minutes").val();
+			var p_long_decimal = $("#p_long_decimal").val();
+			var p_observation = $("#p_observation").val();
+			var p_photo = $(".img-responsive").attr('src');
+			var p_deviceuuid = localStorage.getItem("deviceuuid");
+			$.ajax({
+				url:HOSTDOMAIN+"/index.php?act=add-hidrographic",
+				type:'POST',
+				data:{p_c_edition:p_c_edition,p_c_prefix:p_c_prefix,p_c_number:p_c_number,p_c_suffix:p_c_suffix,p_latitude:p_latitude,p_longitude:p_longitude,p_nm_week:p_nm_week,p_nm_year:p_nm_year,p_lat_degrees:p_lat_degrees,p_lat_minutes:p_lat_minutes,p_lat_decimal:p_lat_decimal,p_long_degrees:p_long_degrees,p_long_minutes:p_long_minutes,p_long_decimal:p_long_decimal,p_observation:p_observation,p_photo:p_photo,p_deviceuuid:p_deviceuuid},
+				dataType:'json',
+				success:function(datax){
+					goHome();
+					if(datax.data && datax.error <= 0){
+						navigator.notification.alert(datax.message.join("\r\n"), function(){
+						}, "", "OK");
+					}else{
+						navigator.notification.alert(datax.message.join("\r\n"), function(){
+						
+						}, "", "OK");
+					}
+				},
+				error:function(data){
+					navigator.notification.alert("Error Connection", function(){
+					
+					}, "", "OK");
+				}
+			});
+		});
+	});	
+	</script>
+
+
+  
+
+  </body>
+</html>
